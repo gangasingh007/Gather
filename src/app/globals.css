@@ -1,26 +1,247 @@
 @import "tailwindcss";
 
+/* ─── Design Tokens from DESIGN.md ─── */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand & Accent */
+  --color-primary: #150f23;
+  --color-ink-deep: #1f1633;
+  --color-on-primary: #ffffff;
+  --color-accent-lime: #c2ef4e;
+  --color-accent-pink: #fa7faa;
+  --color-accent-violet: #6a5fc1;
+  --color-accent-violet-deep: #422082;
+  --color-accent-violet-mid: #79628c;
+
+  /* Surface */
+  --color-surface-canvas-dark: #1f1633;
+  --color-surface-canvas-light: #ffffff;
+  --color-surface-night: #150f23;
+  --color-surface-press-light: #f0f0f0;
+  --color-surface-press-stronger: #efefef;
+
+  /* Hairlines */
+  --color-hairline-violet: #362d59;
+  --color-hairline-cool: #cfcfdb;
+  --color-hairline-cloud: #e5e7eb;
+
+  /* Text */
+  --color-ink: #1f1633;
+  --color-ink-press: #1a1a1a;
+  --color-on-dark-muted: #bdb8c0;
+  --color-on-dark-faint: rgba(255, 255, 255, 0.18);
+
+  /* Semantic */
+  --color-ring-focus: rgba(59, 130, 246, 0.5);
+
+  /* Spacing */
+  --spacing-xxs: 2px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
+  --spacing-section: 96px;
+
+  /* Border Radius */
+  --rounded-xs: 4px;
+  --rounded-sm: 6px;
+  --rounded-md: 8px;
+  --rounded-lg: 10px;
+  --rounded-xl: 12px;
+  --rounded-xxl: 18px;
+  --rounded-full: 9999px;
+
+  /* Typography Families connected with Next Font variables */
+  --font-display: var(--font-space-grotesk), var(--font-rubik), system-ui, sans-serif;
+  --font-body: var(--font-rubik), -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-code: Monaco, Menlo, "Ubuntu Mono", monospace;
 }
+
+/* ─── Tailwind Theme Extension ─── */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-primary: var(--color-primary);
+  --color-ink-deep: var(--color-ink-deep);
+  --color-on-primary: var(--color-on-primary);
+  --color-accent-lime: var(--color-accent-lime);
+  --color-accent-pink: var(--color-accent-pink);
+  --color-accent-violet: var(--color-accent-violet);
+  --color-accent-violet-deep: var(--color-accent-violet-deep);
+  --color-accent-violet-mid: var(--color-accent-violet-mid);
+  --color-surface-canvas-dark: var(--color-surface-canvas-dark);
+  --color-surface-canvas-light: var(--color-surface-canvas-light);
+  --color-surface-night: var(--color-surface-night);
+  --color-surface-press-light: var(--color-surface-press-light);
+  --color-surface-press-stronger: var(--color-surface-press-stronger);
+  --color-hairline-violet: var(--color-hairline-violet);
+  --color-hairline-cool: var(--color-hairline-cool);
+  --color-hairline-cloud: var(--color-hairline-cloud);
+  --color-ink: var(--color-ink);
+  --color-ink-press: var(--color-ink-press);
+  --color-on-dark-muted: var(--color-on-dark-muted);
+  --color-on-dark-faint: var(--color-on-dark-faint);
+  --color-ring-focus: var(--color-ring-focus);
+
+  /* Font families */
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-code: var(--font-code);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base Styles ─── */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface-canvas-dark);
+  color: var(--color-on-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Typography Utility Classes ─── */
+
+.text-display-hero {
+  font-family: var(--font-display);
+  font-size: 88px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.text-display-large {
+  font-family: var(--font-display);
+  font-size: 60px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.text-heading-xl {
+  font-family: var(--font-body);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.text-heading-lg {
+  font-family: var(--font-body);
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.text-heading-md {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.text-heading-sm {
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.text-body-lg {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 2;
+  letter-spacing: 0;
+}
+
+.text-body-strong {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.text-body-md {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.text-eyebrow {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.text-button-cap {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.text-button-cap-light {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.text-caption {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: 0;
+}
+
+.text-micro-cap {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.8;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+}
+
+/* ─── Responsive Typography ─── */
+
+@media (max-width: 768px) {
+  .text-display-hero {
+    font-size: 56px;
+  }
+  .text-display-large {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .text-display-hero {
+    font-size: 42px;
+  }
+  .text-display-large {
+    font-size: 32px;
+  }
+  .text-heading-xl {
+    font-size: 24px;
+  }
 }
