@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/Button";
 import { LimeChip } from "@/components/ui/LimeChip";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ImageWithFallback } from "@/components/landing/ImagePlaceholder3D";
 import { StickerMascot } from "@/components/ui/StickerMascot";
 

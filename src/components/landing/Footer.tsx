@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FOOTER_LINKS } from "@/lib/constants";
+import { Logo } from "../ui/Logo";
 
 export function Footer() {
   return (
@@ -26,12 +27,7 @@ export function Footer() {
           {/* Logo & Brand Column */}
           <div className="col-span-2 space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-[var(--rounded-sm)] bg-primary text-accent-lime flex items-center justify-center font-mono font-bold text-sm">
-                G•
-              </div>
-              <span className="text-heading-sm font-display tracking-tight text-ink-deep">
-                Gather
-              </span>
+              <Logo size="md" theme="light" imageSrc="/images/logo-badge.png" />
             </Link>
 
             <p className="text-caption text-ink-deep/70 max-w-xs leading-relaxed">

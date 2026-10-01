@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { Logo } from "../ui/Logo";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,12 +28,7 @@ export function Navbar() {
       <div className="mx-auto max-w-[1152px] px-6 md:px-8 flex items-center justify-between">
         {/* Brand Wordmark */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-[var(--rounded-sm)] bg-surface-night border border-hairline-violet flex items-center justify-center text-accent-lime font-mono font-bold text-sm tracking-tighter group-hover:border-accent-lime transition-colors">
-            G•
-          </div>
-          <span className="text-heading-sm font-display tracking-tight text-on-primary">
-            Gather
-          </span>
+          <Logo size="md" imageSrc="/images/logo-badge.png" />
         </Link>
 
         {/* Desktop Navigation Links */}
