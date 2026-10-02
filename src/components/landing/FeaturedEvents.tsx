@@ -1,13 +1,24 @@
+"use client";
+
+import { useState } from "react";
 import { FEATURED_EVENTS } from "@/lib/constants";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { LimeChip } from "@/components/ui/LimeChip";
 import { Button } from "@/components/ui/Button";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
-import { ImageWithFallback } from "@/components/landing/ImagePlaceholder3D";
 import { StickerMascot } from "@/components/ui/StickerMascot";
+import FlexCarousel from "@/components/ui/FlexCarouselItem";
 import RotatingText from "../ui/RotatingText";
 
 export function FeaturedEvents() {
+  const [activeEventIndex, setActiveEventIndex] = useState(0);
+  const activeEvent = FEATURED_EVENTS[activeEventIndex] ?? FEATURED_EVENTS[0];
+  const carouselItems = FEATURED_EVENTS.map((event) => ({
+    src: event.image,
+    alt: event.title,
+    title: event.title,
+    subtitle: event.subtitle,
+  }));
+
   return (
     <SectionWrapper id="events" className="relative border-b border-hairline-violet/50">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
@@ -16,7 +27,7 @@ export function FeaturedEvents() {
             HAPPENING SOON
           </Eyebrow>
           <h2 className="text-display-large text-on-primary">
-            Events Worth 
+            Events Worth{" "}
             <RotatingText
               texts={['Attending', 'Experiencing', 'Exploring']}
               mainClassName="px-2 bg-accent-lime text-ink-deep py-0.5 justify-start rounded-lg w-max-content inline-flex"
@@ -40,62 +51,50 @@ export function FeaturedEvents() {
         </p>
       </div>
 
-      {/* 3-Column Event Card Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {FEATURED_EVENTS.map((event) => (
-          <div
-            key={event.id}
-            className="group flex flex-col bg-surface-night rounded-[var(--rounded-xl)] border border-hairline-violet hover:border-accent-violet-mid transition-all duration-300 overflow-hidden shadow-xl"
-          >
-            {/* Card Image Area */}
-            <div className="relative w-full h-56 bg-ink-deep overflow-hidden">
-              <ImageWithFallback
-                src={event.image}
-                alt={event.title}
-                fill
-                fallbackType="event"
-                label={event.title}
-                className="group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute top-3 right-3 bg-surface-night/90 backdrop-blur-md px-3 py-1 rounded-[var(--rounded-xs)] border border-hairline-violet text-micro-cap font-mono text-accent-lime font-bold">
-                {event.price}
-              </div>
-            </div>
+      <div className="overflow-hidden rounded-[var(--rounded-xl)] border border-hairline-violet bg-surface-night">
+        <div className="relative h-[380px] sm:h-[460px] md:h-[560px]">
+          <FlexCarousel
+            items={carouselItems}
+            preset="liquid"
+            intro="rise"
+            cardHeight={0.5}
+            gap={12}
+            squeeze={0.2}
+            focusOnClick
+            captions
+            fit="natural"
+            radius={0}
+            lensWidth={0.74}
+            lensHeight={1.18}
+            tilt={62}
+            roundness={1}
+            bend={0.34}
+            reach={0.38}
+            curl="twist"
+            dispersion={0.45}
+            liquid={0}
+            followCursor={false}
+            autoplay={false}
+            interval={4}
+            captureWheel
+            onChange={(index) => setActiveEventIndex(index)}
+          />
+        </div>
 
-            {/* Card Body */}
-            <div className="p-6 flex flex-col flex-1 justify-between space-y-5">
-              <div>
-                <h3 className="text-heading-lg text-on-primary font-display font-medium group-hover:text-accent-lime transition-colors">
-                  {event.title}
-                </h3>
-                <p className="text-body-md text-on-dark-muted mt-1 text-sm line-clamp-1">
-                  {event.subtitle}
-                </p>
-              </div>
-
-              {/* Event Metadata */}
-              <div className="pt-2 border-t border-hairline-violet/50 space-y-2 text-caption text-on-dark-muted">
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-pink" />
-                  <span>📍 {event.location}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent-lime" />
-                  <span>📅 {event.date}</span>
-                </div>
-              </div>
-
-              {/* Action Button */}
-              <Button
-                variant="inverted"
-                href={`/events/${event.id}`}
-                className="w-full text-center"
-              >
-                {event.cta}
-              </Button>
-            </div>
+        <div className="flex flex-col gap-5 border-t border-hairline-violet/60 p-5 sm:flex-row sm:items-center sm:justify-between sm:px-7">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-caption text-on-dark-muted">
+            <span className="font-mono font-bold text-accent-lime">{activeEvent.price}</span>
+            <span>{activeEvent.location}</span>
+            <span>{activeEvent.date}</span>
           </div>
-        ))}
+          <Button
+            variant="inverted"
+            href={`/events/${activeEvent.id}`}
+            className="w-full sm:w-auto"
+          >
+            {activeEvent.cta}
+          </Button>
+        </div>
       </div>
 
       {/* Sticker Mascot at boundary */}

@@ -6,7 +6,7 @@ export const FEATURED_EVENTS = [
     location: "Chandigarh",
     date: "October 12, 2026",
     price: "₹499",
-    image: "/images/events/techfest.png",
+    image: "/images/images.jpg",
     cta: "BOOK NOW",
   },
   {
@@ -16,7 +16,7 @@ export const FEATURED_EVENTS = [
     location: "New Delhi",
     date: "November 8, 2026",
     price: "₹1,999",
-    image: "/images/events/soundwave.png",
+    image: "/images/music.webp",
     cta: "BOOK NOW",
   },
   {
@@ -26,9 +26,58 @@ export const FEATURED_EVENTS = [
     location: "Bengaluru",
     date: "December 2, 2026",
     price: "Free",
-    image: "/images/events/startup-summit.png",
+    image: "/images/startup.jpg",
     cta: "REGISTER",
   },
+  {
+    id: "art-expo-2026",
+    title: "Art Expo 2026",
+    subtitle: "Celebrating Contemporary Art & Design",
+    location: "Mumbai",
+    date: "January 15, 2027",
+    price: "₹299",
+    image: "/images/art.jpg",
+    cta: "BOOK NOW",
+  },
+  {
+    id: "comedy-night-delhi",
+    title: "Comedy Night Delhi",
+    subtitle: "Stand-up Comedy Extravaganza",
+    location: "New Delhi",
+    date: "February 20, 2027",
+    price: "₹399",
+    image: "/images/comedy.avif",
+    cta: "BOOK NOW",
+  },
+  {
+    id: "photography-workshop",
+    title: "Photography Workshop",
+    subtitle: "Master the Art of Photography",
+    location: "Kolkata",
+    date: "March 10, 2027",
+    price: "₹799",
+    image: "/images/photo.avif",
+    cta: "REGISTER",
+  },
+  {
+    id: "food-festival-2027",
+    title: "Food Festival 2027",
+    subtitle: "A Culinary Journey Across India",
+    location: "Hyderabad",
+    date: "April 5, 2027",
+    price: "₹199",
+    image: "/images/food.jpg",
+    cta: "BOOK NOW",
+  },{
+    id:"movie-night-under-stars",
+    title:"Movie Night Under the Stars",
+    subtitle:"Outdoor Cinema Experience",
+    location:"Pune",
+    date:"May 22, 2027",
+    price:"₹299",
+    image:"/images/movie.jpg",
+    cta:"BOOK NOW"
+  }
 ] as const;
 
 export const HOW_IT_WORKS_STEPS = [
