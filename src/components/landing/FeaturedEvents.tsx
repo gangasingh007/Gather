@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { ImageWithFallback } from "@/components/landing/ImagePlaceholder3D";
 import { StickerMascot } from "@/components/ui/StickerMascot";
+import RotatingText from "../ui/RotatingText";
 
 export function FeaturedEvents() {
   return (
@@ -15,7 +16,22 @@ export function FeaturedEvents() {
             HAPPENING SOON
           </Eyebrow>
           <h2 className="text-display-large text-on-primary">
-            Events Worth <LimeChip>Showing Up</LimeChip> For
+            Events Worth 
+            <RotatingText
+              texts={['Attending', 'Experiencing', 'Exploring']}
+              mainClassName="px-2 bg-accent-lime text-ink-deep py-0.5 justify-start rounded-lg w-max-content inline-flex"
+              staggerFrom="last"
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-120%" }}
+              staggerDuration={0.025}
+              splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+              transition={{ type: "spring", damping: 30, stiffness: 400 }}
+              rotationInterval={2000}
+              splitBy="characters"
+              auto
+              loop
+            />
           </h2>
         </div>
         <p className="text-body-md text-on-dark-muted max-w-sm mt-4 md:mt-0">

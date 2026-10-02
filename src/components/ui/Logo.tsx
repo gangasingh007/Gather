@@ -73,7 +73,7 @@
       const renderContent = () => (                                                                                           
         <div className={`inline-flex items-center ${cfg.gap} select-none group ${className}`}>                                
           {/* 1. Emblem Mark */}                                                                                              
-          {imageSrc && !imageFailed ? (                                                                                       
+          {/* {imageSrc && !imageFailed ? (                                                                                       
             <div className={`relative ${cfg.iconSize} rounded-[var(--rounded-sm)] overflow-hidden flex-shrink-0`}>            
               <Image                                                                                                          
                 src={imageSrc}                                                                                                
@@ -102,7 +102,7 @@
                 <circle cx="19" cy="5" r="3" fill="var(--color-accent-lime)" />                                               
               </svg>                                                                                                          
             </div>                                                                                                            
-          )}                                                                                                                  
+          )}                                                                                                                   */}
                                                                                                                               
           {/* 2. Brand Wordmark Typography */}                                                                                
           {variant === "full" && (                                                                                            

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/Button";
 import { LimeChip } from "@/components/ui/LimeChip";
 import { ImageWithFallback } from "@/components/landing/ImagePlaceholder3D";
 import { StickerMascot } from "@/components/ui/StickerMascot";
+import RotatingText from "../ui/RotatingText";
 
 export function Hero() {
   return (
@@ -32,7 +33,21 @@ export function Hero() {
           <h1 className="text-display-hero text-on-primary">
             Find Your Next{" "}
             <span className="block mt-1">
-              <LimeChip>Unforgettable</LimeChip>
+              <RotatingText
+                texts={['Events', 'Hackathons', 'Concerts', 'Meetups']}
+                mainClassName="px-2 bg-accent-lime text-ink-deep py-0.5 justify-start rounded-lg w-max-content inline-flex"
+                staggerFrom="last"
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+                splitBy="characters"
+                auto
+                loop
+              /> 
             </span>
             <span className="block mt-1">Experience</span>
           </h1>
